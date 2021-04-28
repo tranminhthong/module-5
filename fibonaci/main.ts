@@ -7,4 +7,4 @@ function fibonacci(n: number): number {
 
 
 
-console.log(fibonacci(20));
+console.log(fibonacci(50));
