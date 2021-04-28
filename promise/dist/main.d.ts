@@ -1,3 +1,2 @@
-declare let money: number;
-declare const buyACar: (car: any) => Promise<unknown>;
-declare const promise: Promise<void>;
+declare const buyACar: (car: any) => string;
+declare var money: number;
