@@ -1,0 +1,12 @@
+<input type="number" [(ngModel)]="fistNumber">
+<select [(ngModel)]="operator">
+  <option selected value="+">+</option>
+  <option value="-">-</option>
+  <option value="*">*</option>
+  <option value="/">/</option>
+</select>
+<input type="number" [(ngModel)]="secondNumber">
+<button (click)="calculate()">Tính</button><br>
+<div>Kết quả: {{output}}</div>
+<div>Số thứ nhất: {{fistNumber}}</div>
+<div>Số thứ hai: {{secondNumber}}</div>
