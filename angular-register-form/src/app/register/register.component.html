@@ -1,0 +1,109 @@
+<h1>Register</h1>
+<form [formGroup]="user" (ngSubmit)="onSubmit()" novalidate>
+
+  <p>
+    <label for="email">Email </label>
+    <input type="email" id="email" name="email" formControlName="email">
+  </p>
+  <div *ngIf="!user.controls.email.valid && (user.controls.email.dirty ||user.controls.email.touched)">
+    <div [hidden]="!user.controls.email.errors.required">
+      <span>Email is required</span>
+    </div>
+    <div [hidden]="!user.controls.email.errors.email">
+      <span>Invalid email id: must have @</span>
+    </div>
+  </div>
+  <p>
+    <label for="password">Password </label>
+    <input type="password" id="password" name="password" formControlName="password">
+  </p>
+  <div
+    *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+    <div [hidden]="!password.errors.required">
+      <span>Password is required</span>
+    </div>
+    <div [hidden]="!password.errors.minlength">
+      <span>Min Length is 6</span>
+    </div>
+  </div>
+  <p>
+    <label for="confirmPassword">Confirm Password </label>
+    <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
+  </p>
+  <p>
+    <label for="age">Age </label>
+    <input type="number" id="age" name="age" formControlName="age">
+  </p>
+
+  <div
+    *ngIf="!age?.valid && (age?.dirty ||age?.touched)">
+    <div [hidden]="!age.errors.required">
+      <span>Age is required</span>
+    </div>
+    <div [hidden]="!age.errors.min">
+      <span>Min is 18</span>
+    </div>
+  </div>
+
+  <p>
+    <label for="phone">Phone Number </label>
+    <input type="text" id="phone" name="phone" formControlName="phone">
+  </p>
+
+  <div
+    *ngIf="!phone?.valid && (phone?.dirty ||phone?.touched)">
+    <div [hidden]="!phone.errors.required">
+      <span>Phone is required</span>
+    </div>
+    <div [hidden]="!phone.errors.pattern">
+      <span>Start +84 , follow 9-10 number</span>
+    </div>
+  </div>
+
+  <p>
+    <label for="country">Country </label>
+    <select id="country" name="country" formControlName="country">
+      <option [ngValue]="c.name" *ngFor="let c of countryList">{{c.name}}</option>
+    </select>
+  </p>
+  <div
+    *ngIf="!country?.valid && (country?.dirty ||country?.touched)">
+    <div [hidden]="!country.errors.required">
+      <span>Country is required</span>
+    </div>
+  </div>
+  <p>
+    <label >Gender </label>
+    <input type="radio" value="male" name="gender" formControlName="gender"> Male
+    <input type="radio" value="female" name="gender" formControlName="gender"> Female
+  </p>
+  <div
+    *ngIf="!gender?.valid && (gender?.dirty ||gender?.touched)">
+    <div [hidden]="!gender.errors.required">
+      <span>Country is required</span>
+    </div>
+  </div>
+  <p>
+    <button type="submit" [disabled]="!user.valid">Submit</button>
+  </p>
+
+</form>
+
+<table>
+  <tr>
+    <td>Email</td>
+    <td>Age</td>
+    <td>Phone</td>
+    <td>Password</td>
+    <td>Country</td>
+    <td>Gender</td>
+  </tr>
+  <tr *ngFor="let u of userList">
+    <td>{{u.email}}</td>
+    <td>{{u.age}}</td>
+    <td>{{u.phone}}</td>
+    <td>{{u.password}}</td>
+    <td>{{u.country}}</td>
+    <td>{{u.gender}}</td>
+  </tr>
+</table>
