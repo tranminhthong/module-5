@@ -28,8 +28,13 @@
   </div>
   <p>
     <label for="confirmPassword">Confirm Password </label>
-    <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
+    <input type="password" ngValidateEqual="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
   </p>
+  <div *ngIf="(confirmPassword.dirty || confirmPassword.touched) && confirmPassword.invalid">
+    <p class="warning-text" *ngIf="confirmPassword.hasError('notEqual') && password.valid">
+      <span>Passwords Don't Match</span>
+    </p>
+  </div>
   <p>
     <label for="age">Age </label>
     <input type="number" id="age" name="age" formControlName="age">

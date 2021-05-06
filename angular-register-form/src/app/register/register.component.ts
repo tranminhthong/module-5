@@ -23,6 +23,10 @@ export class RegisterComponent implements OnInit {
     return this.user.get('password');
   }
 
+  get confirmPassword() {
+    return this.user.get('confirmPassword');
+  }
+
   get age() {
     return this.user.get('age');
   }
