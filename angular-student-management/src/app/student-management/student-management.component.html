@@ -1,0 +1,60 @@
+<h1>Student Management</h1>
+<h3>List Student</h3>
+<button (click)="openFormAdd()">Add new student</button>
+<table>
+  <tr>
+    <td>#</td>
+    <td>Name</td>
+    <td>Age</td>
+    <td>Edit</td>
+    <td>Delete</td>
+  </tr>
+  <tr *ngFor="let s of students;index as i">
+    <td>{{i + 1}}</td>
+    <td>{{s.name}}</td>
+    <td>{{s.age}}</td>
+    <td><button (click)="openFormEdit(i)">Edit</button></td>
+    <td><button (click)="deleteStudent(i)">Delete</button></td>
+  </tr>
+</table>
+<ng-container *ngIf="isShowFormAdd">
+  <h3>Create student</h3>
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input [(ngModel)]="student.name" name="name" type="text"/></td>
+    </tr>
+    <tr>
+      <td>Age:</td>
+      <td><input [(ngModel)]="student.age" name="age" type="number"/></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button (click)="addStudent()" type="submit" value="Add">Add</button>
+      </td>
+    </tr>
+  </table>
+</ng-container>
+<ng-container *ngIf="isShowFormEdit">
+  <div>
+    <h3>Edit student</h3>
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td><input [(ngModel)]="studentUpdate.name" name="name" type="text"/></td>
+      </tr>
+      <tr>
+        <td>Age:</td>
+        <td><input [(ngModel)]="studentUpdate.age" name="age" type="number"/></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <button (click)="editStudent(currentIndex)" type="submit" value="Edit">Edit</button>
+          <button (click)="close()">Close</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-container>
