@@ -12,7 +12,7 @@ import { TimelinesComponent } from './timelines/timelines.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

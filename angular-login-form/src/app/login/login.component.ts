@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   status = false;
 
   user: User = {
+    name: 'thông',
     email: 'abc@abc',
     password: '123456'
   };
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   private checkPass(password: string) {
     if (this.user.password === password) {
-      this.title = `Hello ${this.user.email}`;
+      this.title = `Hello ${this.user.name}`;
       this.status = true;
     }
   }
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
 }
 
 export interface User {
+  name?: string;
   email?: string;
   password?: string;
 }

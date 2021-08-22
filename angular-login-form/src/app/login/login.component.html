@@ -1,35 +1,47 @@
-<h1>{{title}}</h1>
+<h1>{{title | uppercase}}</h1>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate *ngIf="!status">
   <table>
     <tr>
       <td>Email</td>
       <td><input type="email" name="email" formControlName="email"></td>
     </tr>
-    <div
-      *ngIf="!userForm.controls.email?.valid && (userForm.controls.email?.dirty ||userForm.controls.email?.touched)">
-      <div [hidden]="!userForm.controls.email.errors.required">
-        <span>Email is required</span>
-      </div>
-      <div [hidden]="!userForm.controls.email.errors.email">
-        <span>Must have '@'</span>
-      </div>
-    </div>
+    <tr>
+      <td></td>
+      <td>
+        <div style="color: red"
+          *ngIf="!userForm.controls.email?.valid && (userForm.controls.email?.dirty ||userForm.controls.email?.touched)">
+          <div [hidden]="!userForm.controls.email.errors.required">
+            <span>Email is required</span>
+          </div>
+          <div [hidden]="!userForm.controls.email.errors.email">
+            <span>Must have '@'</span>
+          </div>
+        </div>
+      </td>
+    </tr>
     <tr>
       <td>Password</td>
       <td><input type="password" name="password" formControlName="password"></td>
     </tr>
-    <div
-      *ngIf="!userForm.controls.password?.valid && (userForm.controls.password?.dirty ||userForm.controls.password?.touched)">
-      <div [hidden]="!userForm.controls.password.errors.required">
-        <span>Password is required</span>
-      </div>
-      <div [hidden]="!userForm.controls.password.errors.minlength">
-        <span>Min length is 6</span>
-      </div>
-    </div>
     <tr>
       <td></td>
-      <td><button type="submit">Login</button></td>
+      <td>
+        <div style="color: red"
+          *ngIf="!userForm.controls.password?.valid && (userForm.controls.password?.dirty ||userForm.controls.password?.touched)">
+          <div [hidden]="!userForm.controls.password.errors.required">
+            <span>Password is required</span>
+          </div>
+          <div [hidden]="!userForm.controls.password.errors.minlength">
+            <span>Min length is 6</span>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button type="submit">Login</button>
+      </td>
     </tr>
   </table>
 </form>
